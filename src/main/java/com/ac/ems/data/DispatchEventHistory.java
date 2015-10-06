@@ -15,14 +15,23 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  */
 public class DispatchEventHistory {
 
+  /** The eventID that was generated for this event */
   private long   eventID;
+  /** The dispatch ID that was generated for this dispatch */
   private long   dispatchID;
+  /** The ambulance ID assigned to respond */
   private long   ambulanceID;
+  /** The hospital ID recommended at dispatch */
   private long   recommendedHospitalID;
+  /** The actual destination hospital.  Can be blank (-1). */
   private long   targetHospitalID;
+  /** The final state of the event */
   private String eventResolvedState;
+  /** The date the event began */
   private Date   eventStartDate;
+  /** The date transport of the patient began.  Can be null. */
   private Date   beginTransportDate;
+  /** The date the event was ended. */
   private Date   eventEndDate;
   
   /** Default Constructor */
