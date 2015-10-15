@@ -32,8 +32,8 @@ public class Ambulance {
   public Ambulance() {
     ambulanceID = -1L;
     providerID  = -1L;
-    ambLat      = -1.0;
-    ambLon      = -1.0;
+    ambLat      = 0.0;
+    ambLon      = 0.0;
     lastUpdate  = null;
   }
   

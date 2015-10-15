@@ -30,8 +30,8 @@ public class AmbulanceTravelHistory {
   public AmbulanceTravelHistory() {
     ambulanceID  = -1L;
     eventID      = -1L;
-    ambLat       = -1.0;
-    ambLon       = -1.0;
+    ambLat       = 0.0;
+    ambLon       = 0.0;
     recordedDate = null;
   }
   

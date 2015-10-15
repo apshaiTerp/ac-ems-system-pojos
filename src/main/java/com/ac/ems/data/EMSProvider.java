@@ -34,8 +34,8 @@ public class EMSProvider {
   public EMSProvider() {
     providerID         = -1L;
     providerName       = null;
-    providerLat        = -1.0;
-    providerLon        = -1.0;
+    providerLat        = 0.0;
+    providerLon        = 0.0;
     ambulances         = null;
     availAmbulances    = null;
     assignedAmbulances = null;
