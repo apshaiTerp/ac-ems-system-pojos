@@ -19,6 +19,8 @@ public class EMSProvider {
   private long       providerID;
   /** The display name for this provider */
   private String     providerName;
+  /** The text address for the EMS Provier */
+  private String     providerAddress;
   /** The latitude for this provider's location */
   private double     providerLat;
   /** The longitude for this provider's location */
@@ -34,6 +36,7 @@ public class EMSProvider {
   public EMSProvider() {
     providerID         = -1L;
     providerName       = null;
+    providerAddress    = null;
     providerLat        = 0.0;
     providerLon        = 0.0;
     ambulances         = null;
@@ -46,16 +49,18 @@ public class EMSProvider {
    * 
    * @param providerID
    * @param providerName
+   * @param providerAddress
    * @param providerLat
    * @param providerLon
    * @param ambulances
    * @param availAmbulances
    * @param assignedAmbulances
    */
-  public EMSProvider(long providerID, String providerName, double providerLat, double providerLon, List<Long> ambulances,
-      List<Long> availAmbulances, List<Long> assignedAmbulances) {
+  public EMSProvider(long providerID, String providerName, String providerAddress, double providerLat, double providerLon, 
+      List<Long> ambulances, List<Long> availAmbulances, List<Long> assignedAmbulances) {
     this.providerID         = providerID;
     this.providerName       = providerName;
+    this.providerAddress    = providerAddress;
     this.providerLat        = providerLat;
     this.providerLon        = providerLon;
     this.ambulances         = ambulances;
@@ -75,6 +80,7 @@ public class EMSProvider {
       EMSProvider jsonData = mapper.readValue(jsonString, EMSProvider.class);
       providerID         = jsonData.providerID;
       providerName       = jsonData.providerName;
+      providerAddress    = jsonData.providerAddress;
       providerLat        = jsonData.providerLat;
       providerLon        = jsonData.providerLon;
       ambulances         = jsonData.ambulances;
@@ -172,5 +178,19 @@ public class EMSProvider {
    */
   public void setAssignedAmbulances(List<Long> assignedAmbulances) {
     this.assignedAmbulances = assignedAmbulances;
+  }
+
+  /**
+   * @return the providerAddress
+   */
+  public String getProviderAddress() {
+    return providerAddress;
+  }
+
+  /**
+   * @param providerAddress the providerAddress to set
+   */
+  public void setProviderAddress(String providerAddress) {
+    this.providerAddress = providerAddress;
   }
 }
