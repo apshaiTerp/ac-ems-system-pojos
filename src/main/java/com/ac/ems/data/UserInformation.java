@@ -3,6 +3,7 @@ package com.ac.ems.data;
 import java.io.IOException;
 import java.util.List;
 
+import com.ac.ems.data.enums.UserRole;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

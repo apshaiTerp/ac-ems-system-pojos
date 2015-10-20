@@ -1,4 +1,4 @@
-package com.ac.ems.data;
+package com.ac.ems.data.enums;
 
 /**
  * The valid organizations a user can be associated with.

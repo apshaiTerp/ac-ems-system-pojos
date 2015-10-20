@@ -1,6 +1,5 @@
-package com.ac.ems.data.util;
+package com.ac.ems.data.enums;
 
-import com.ac.ems.data.UserRole;
 
 /**
  * Helper class to manage conversions safely.

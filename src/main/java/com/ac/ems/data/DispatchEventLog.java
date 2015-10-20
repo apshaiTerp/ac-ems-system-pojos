@@ -19,6 +19,8 @@ public class DispatchEventLog {
   private long   eventID;
   /** The new/current state of the event */
   private String curState;
+  /** A description of the change that occurred.  Useful if the change was not a state change? */
+  private String changeDescription;
   /** The date this state change occurred */
   private Date   changedOnDate;
   /** The userID who recorded this state change */
@@ -26,10 +28,11 @@ public class DispatchEventLog {
   
   /** Default Constructor */
   public DispatchEventLog() {
-    eventID         = -1L;
-    curState        = null;
-    changedOnDate   = null;
-    changedByUserID = -1L;
+    eventID           = -1L;
+    curState          = null;
+    changeDescription = null;
+    changedOnDate     = null;
+    changedByUserID   = -1L;
   }
   
   /**
@@ -37,14 +40,16 @@ public class DispatchEventLog {
    * 
    * @param eventID
    * @param curState
+   * @param changeDescription
    * @param changedOnDate
    * @param changedByUserID
    */
-  public DispatchEventLog(long eventID, String curState, Date changedOnDate, long changedByUserID) {
-    this.eventID         = eventID;
-    this.curState        = curState;
-    this.changedOnDate   = changedOnDate;
-    this.changedByUserID = changedByUserID;
+  public DispatchEventLog(long eventID, String curState, String changeDescription, Date changedOnDate, long changedByUserID) {
+    this.eventID           = eventID;
+    this.curState          = curState;
+    this.changeDescription = changeDescription;
+    this.changedOnDate     = changedOnDate;
+    this.changedByUserID   = changedByUserID;
   }
   
   /**
@@ -57,10 +62,11 @@ public class DispatchEventLog {
     ObjectMapper mapper = new ObjectMapper();
     try {
       DispatchEventLog jsonData = mapper.readValue(jsonString, DispatchEventLog.class);
-      eventID         = jsonData.eventID;
-      curState        = jsonData.curState;
-      changedOnDate   = jsonData.changedOnDate;
-      changedByUserID = jsonData.changedByUserID;
+      eventID           = jsonData.eventID;
+      curState          = jsonData.curState;
+      changeDescription = jsonData.changeDescription;
+      changedOnDate     = jsonData.changedOnDate;
+      changedByUserID   = jsonData.changedByUserID;
     } catch (JsonParseException jpe) {
       jpe.printStackTrace();
     } catch (JsonMappingException jme) {
@@ -117,5 +123,19 @@ public class DispatchEventLog {
    */
   public void setChangedByUserID(long changedByUserID) {
     this.changedByUserID = changedByUserID;
+  }
+
+  /**
+   * @return the changeDescription
+   */
+  public String getChangeDescription() {
+    return changeDescription;
+  }
+
+  /**
+   * @param changeDescription the changeDescription to set
+   */
+  public void setChangeDescription(String changeDescription) {
+    this.changeDescription = changeDescription;
   }
 }

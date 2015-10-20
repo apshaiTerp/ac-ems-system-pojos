@@ -3,6 +3,7 @@ package com.ac.ems.data;
 import java.io.IOException;
 import java.util.Date;
 
+import com.ac.ems.data.enums.SeverityLevel;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -19,10 +20,16 @@ public class DispatchDetails {
   private long   dispatchID;
   /** The patient name.  Can be undefined. */
   private String patientName;
+  /** The patient Gender */
+  private String patientGender;   //Should be limited to "M", "F", "Unknown"
+  /** The age range of the patient */
+  private String patientAgeRange;  //Should be limited to "child", "teen", "adult", "unknown"
   /** The address where response is requested */
   private String patientAddress;
   /** The primary complaint recorded as part of the dispatch */
   private String patientComplaint;
+  /** The reported initial severity level (May not be known) */
+  private SeverityLevel reportedSeverity;
   /** The name of the reporter */
   private String reportedByName;
   /** The user ID for the dispatcher who assigned this request */
@@ -36,8 +43,11 @@ public class DispatchDetails {
   public DispatchDetails() {
     dispatchID           = -1L;
     patientName          = null;
+    patientGender        = null;
+    patientAgeRange      = null;
     patientAddress       = null;
     patientComplaint     = null;
+    reportedSeverity     = null;
     reportedByName       = null;
     dispatchUserID       = -1L;
     dispatchReceivedDate = null;
@@ -54,12 +64,16 @@ public class DispatchDetails {
    * @param dispatchUserID
    * @param dispatchReceivedDate
    */
-  public DispatchDetails(long dispatchID, String patientName, String patientAddress, String patientComplaint, 
-      String reportedByName, long dispatchUserID, Date dispatchReceivedDate) {
+  public DispatchDetails(long dispatchID, String patientName, String patientGender, String patientAgeRange,
+      String patientAddress, String patientComplaint, SeverityLevel reportedSeverity, String reportedByName, 
+      long dispatchUserID, Date dispatchReceivedDate) {
     this.dispatchID           = dispatchID;
     this.patientName          = patientName;
+    this.patientGender        = patientGender;
+    this.patientAgeRange      = patientAgeRange;
     this.patientAddress       = patientAddress;
     this.patientComplaint     = patientComplaint;
+    this.reportedSeverity     = reportedSeverity;
     this.reportedByName       = reportedByName;
     this.dispatchUserID       = dispatchUserID;
     this.dispatchReceivedDate = dispatchReceivedDate;
@@ -77,8 +91,11 @@ public class DispatchDetails {
       DispatchDetails jsonData = mapper.readValue(jsonString, DispatchDetails.class);
       dispatchID           = jsonData.dispatchID;
       patientName          = jsonData.patientName;
+      patientGender        = jsonData.patientGender;
+      patientAgeRange      = jsonData.patientAgeRange;
       patientAddress       = jsonData.patientAddress;
       patientComplaint     = jsonData.patientComplaint;
+      reportedSeverity     = jsonData.reportedSeverity;
       reportedByName       = jsonData.reportedByName;
       dispatchUserID       = jsonData.dispatchUserID;
       dispatchReceivedDate = jsonData.dispatchReceivedDate;
@@ -174,5 +191,47 @@ public class DispatchDetails {
    */
   public void setDispatchReceivedDate(Date dispatchReceivedDate) {
     this.dispatchReceivedDate = dispatchReceivedDate;
+  }
+
+  /**
+   * @return the reportedSeverity
+   */
+  public SeverityLevel getReportedSeverity() {
+    return reportedSeverity;
+  }
+
+  /**
+   * @param reportedSeverity the reportedSeverity to set
+   */
+  public void setReportedSeverity(SeverityLevel reportedSeverity) {
+    this.reportedSeverity = reportedSeverity;
+  }
+
+  /**
+   * @return the patientGender
+   */
+  public String getPatientGender() {
+    return patientGender;
+  }
+
+  /**
+   * @param patientGender the patientGender to set
+   */
+  public void setPatientGender(String patientGender) {
+    this.patientGender = patientGender;
+  }
+
+  /**
+   * @return the patientAgeRange
+   */
+  public String getPatientAgeRange() {
+    return patientAgeRange;
+  }
+
+  /**
+   * @param patientAgeRange the patientAgeRange to set
+   */
+  public void setPatientAgeRange(String patientAgeRange) {
+    this.patientAgeRange = patientAgeRange;
   }
 }

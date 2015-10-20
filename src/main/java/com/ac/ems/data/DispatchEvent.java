@@ -3,6 +3,7 @@ package com.ac.ems.data;
 import java.io.IOException;
 import java.util.Date;
 
+import com.ac.ems.data.enums.SeverityLevel;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -31,6 +32,11 @@ public class DispatchEvent {
   private Date   eventStartDate;
   /** The date transport of the patient began.  Can be null. */
   private Date   beginTransportDate;
+  
+  /** The observed age range of the patient */
+  private String actualAgeRange;  //Should be limited to "child", "teen", "adult", "unknown"
+  /** The observed severity of the patient's condition */
+  private SeverityLevel observedSeverity;
 
   /** Default Constructor */
   public DispatchEvent() {
@@ -42,6 +48,8 @@ public class DispatchEvent {
     eventState            = null;
     eventStartDate        = null;
     beginTransportDate    = null;
+    actualAgeRange        = null;
+    observedSeverity      = null;
   }
 
   /**
@@ -55,9 +63,12 @@ public class DispatchEvent {
    * @param eventState
    * @param eventStartDate
    * @param beginTransportDate
+   * @param actualAgeRange
+   * @param observedSeverity
    */
   public DispatchEvent(long eventID, long dispatchID, long ambulanceID, long recommendedHospitalID,
-      long targetHospitalID, String eventState, Date eventStartDate, Date beginTransportDate) {
+      long targetHospitalID, String eventState, Date eventStartDate, Date beginTransportDate,
+      String actualAgeRange, SeverityLevel observedSeverity) {
     this.eventID               = eventID;
     this.dispatchID            = dispatchID;
     this.ambulanceID           = ambulanceID;
@@ -66,6 +77,8 @@ public class DispatchEvent {
     this.eventState            = eventState;
     this.eventStartDate        = eventStartDate;
     this.beginTransportDate    = beginTransportDate;
+    this.actualAgeRange        = actualAgeRange;
+    this.observedSeverity      = observedSeverity;
   }
 
   /**
@@ -86,6 +99,8 @@ public class DispatchEvent {
       eventState            = jsonData.eventState;
       eventStartDate        = jsonData.eventStartDate;
       beginTransportDate    = jsonData.beginTransportDate;
+      actualAgeRange        = jsonData.actualAgeRange;
+      observedSeverity      = jsonData.observedSeverity;
     } catch (JsonParseException jpe) {
       jpe.printStackTrace();
     } catch (JsonMappingException jme) {
@@ -205,5 +220,33 @@ public class DispatchEvent {
    */
   public void setBeginTransportDate(Date beginTransportDate) {
     this.beginTransportDate = beginTransportDate;
+  }
+
+  /**
+   * @return the actualAgeRange
+   */
+  public String getActualAgeRange() {
+    return actualAgeRange;
+  }
+
+  /**
+   * @param actualAgeRange the actualAgeRange to set
+   */
+  public void setActualAgeRange(String actualAgeRange) {
+    this.actualAgeRange = actualAgeRange;
+  }
+
+  /**
+   * @return the observedSeverity
+   */
+  public SeverityLevel getObservedSeverity() {
+    return observedSeverity;
+  }
+
+  /**
+   * @param observedSeverity the observedSeverity to set
+   */
+  public void setObservedSeverity(SeverityLevel observedSeverity) {
+    this.observedSeverity = observedSeverity;
   }
 }

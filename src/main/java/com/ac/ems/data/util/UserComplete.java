@@ -1,7 +1,9 @@
-package com.ac.ems.data;
+package com.ac.ems.data.util;
 
 import java.io.IOException;
 
+import com.ac.ems.data.User;
+import com.ac.ems.data.UserInformation;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
