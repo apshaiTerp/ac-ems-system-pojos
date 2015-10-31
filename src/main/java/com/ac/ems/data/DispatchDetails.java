@@ -37,6 +37,9 @@ public class DispatchDetails {
   /** The date this dispatch was recorded */
   private Date   dispatchReceivedDate;
   
+  /** Redesign to associate to a specific provider */
+  private long   providerID;
+  
   /**
    * Default Constructor
    */
@@ -51,6 +54,7 @@ public class DispatchDetails {
     reportedByName       = null;
     dispatchUserID       = -1L;
     dispatchReceivedDate = null;
+    providerID           = -1L;
   }
   
   /**
@@ -66,7 +70,7 @@ public class DispatchDetails {
    */
   public DispatchDetails(long dispatchID, String patientName, String patientGender, String patientAgeRange,
       String patientAddress, String patientComplaint, SeverityLevel reportedSeverity, String reportedByName, 
-      long dispatchUserID, Date dispatchReceivedDate) {
+      long dispatchUserID, Date dispatchReceivedDate, long providerID) {
     this.dispatchID           = dispatchID;
     this.patientName          = patientName;
     this.patientGender        = patientGender;
@@ -77,6 +81,7 @@ public class DispatchDetails {
     this.reportedByName       = reportedByName;
     this.dispatchUserID       = dispatchUserID;
     this.dispatchReceivedDate = dispatchReceivedDate;
+    this.providerID           = providerID;
   }
   
   /**
@@ -99,6 +104,7 @@ public class DispatchDetails {
       reportedByName       = jsonData.reportedByName;
       dispatchUserID       = jsonData.dispatchUserID;
       dispatchReceivedDate = jsonData.dispatchReceivedDate;
+      providerID           = jsonData.providerID;
     } catch (JsonParseException jpe) {
       jpe.printStackTrace();
     } catch (JsonMappingException jme) {
@@ -233,5 +239,19 @@ public class DispatchDetails {
    */
   public void setPatientAgeRange(String patientAgeRange) {
     this.patientAgeRange = patientAgeRange;
+  }
+
+  /**
+   * @return the providerID
+   */
+  public long getProviderID() {
+    return providerID;
+  }
+
+  /**
+   * @param providerID the providerID to set
+   */
+  public void setProviderID(long providerID) {
+    this.providerID = providerID;
   }
 }
