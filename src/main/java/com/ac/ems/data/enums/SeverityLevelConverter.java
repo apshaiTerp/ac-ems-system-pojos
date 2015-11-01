@@ -19,7 +19,7 @@ public class SeverityLevelConverter {
   public final static String PEDTRAUMA_TEXT      = "Pediatric Trauma";
   public final static String STEMI_TEXT          = "STEMI";
   public final static String STROKE_TEXT         = "Stroke";
-  public final static String UNKNOWN_TEXT        = "Unknown Diagnosis";
+  public final static String UNKNOWN_TEXT        = "Unknown Condition";
   
   public static String convertSeverityToString(SeverityLevel level) {
     if (level == null) return UNKNOWN_TEXT;

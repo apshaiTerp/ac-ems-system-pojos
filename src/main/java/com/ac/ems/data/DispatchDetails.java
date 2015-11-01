@@ -21,7 +21,7 @@ public class DispatchDetails {
   /** The patient name.  Can be undefined. */
   private String patientName;
   /** The patient Gender */
-  private String patientGender;   //Should be limited to "M", "F", "Unknown"
+  private String patientGender;   //Should be limited to "Male", "Female", "Unknown"
   /** The age range of the patient */
   private String patientAgeRange;  //Should be limited to "child", "teen", "adult", "unknown"
   /** The address where response is requested */
@@ -39,6 +39,10 @@ public class DispatchDetails {
   
   /** Redesign to associate to a specific provider */
   private long   providerID;
+  /** Need to store this somewhere */
+  private double incidentLat;
+  /** Need to store this somewhere */
+  private double incidentLon;
   
   /**
    * Default Constructor
@@ -55,6 +59,8 @@ public class DispatchDetails {
     dispatchUserID       = -1L;
     dispatchReceivedDate = null;
     providerID           = -1L;
+    incidentLat          = 0.0;
+    incidentLon          = 0.0;
   }
   
   /**
@@ -70,7 +76,7 @@ public class DispatchDetails {
    */
   public DispatchDetails(long dispatchID, String patientName, String patientGender, String patientAgeRange,
       String patientAddress, String patientComplaint, SeverityLevel reportedSeverity, String reportedByName, 
-      long dispatchUserID, Date dispatchReceivedDate, long providerID) {
+      long dispatchUserID, Date dispatchReceivedDate, long providerID, double incidentLat, double incidentLon) {
     this.dispatchID           = dispatchID;
     this.patientName          = patientName;
     this.patientGender        = patientGender;
@@ -82,6 +88,8 @@ public class DispatchDetails {
     this.dispatchUserID       = dispatchUserID;
     this.dispatchReceivedDate = dispatchReceivedDate;
     this.providerID           = providerID;
+    this.incidentLat          = incidentLat;
+    this.incidentLon          = incidentLon;
   }
   
   /**
@@ -105,6 +113,8 @@ public class DispatchDetails {
       dispatchUserID       = jsonData.dispatchUserID;
       dispatchReceivedDate = jsonData.dispatchReceivedDate;
       providerID           = jsonData.providerID;
+      incidentLat          = jsonData.incidentLat;
+      incidentLon          = jsonData.incidentLon;
     } catch (JsonParseException jpe) {
       jpe.printStackTrace();
     } catch (JsonMappingException jme) {
@@ -253,5 +263,33 @@ public class DispatchDetails {
    */
   public void setProviderID(long providerID) {
     this.providerID = providerID;
+  }
+
+  /**
+   * @return the incidentLat
+   */
+  public double getIncidentLat() {
+    return incidentLat;
+  }
+
+  /**
+   * @param incidentLat the incidentLat to set
+   */
+  public void setIncidentLat(double incidentLat) {
+    this.incidentLat = incidentLat;
+  }
+
+  /**
+   * @return the incidentLon
+   */
+  public double getIncidentLon() {
+    return incidentLon;
+  }
+
+  /**
+   * @param incidentLon the incidentLon to set
+   */
+  public void setIncidentLon(double incidentLon) {
+    this.incidentLon = incidentLon;
   }
 }
