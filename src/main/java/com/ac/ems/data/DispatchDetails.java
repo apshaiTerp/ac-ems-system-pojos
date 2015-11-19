@@ -44,6 +44,9 @@ public class DispatchDetails {
   /** Need to store this somewhere */
   private double incidentLon;
   
+  /** The contact phone number */
+  private String contactPhone;
+  
   /**
    * Default Constructor
    */
@@ -61,6 +64,7 @@ public class DispatchDetails {
     providerID           = -1L;
     incidentLat          = 0.0;
     incidentLon          = 0.0;
+    contactPhone         = null;
   }
   
   /**
@@ -75,7 +79,7 @@ public class DispatchDetails {
    * @param dispatchReceivedDate
    */
   public DispatchDetails(long dispatchID, String patientName, String patientGender, String patientAgeRange,
-      String patientAddress, String patientComplaint, SeverityLevel reportedSeverity, String reportedByName, 
+      String patientAddress, String patientComplaint, SeverityLevel reportedSeverity, String reportedByName, String contactPhone,
       long dispatchUserID, Date dispatchReceivedDate, long providerID, double incidentLat, double incidentLon) {
     this.dispatchID           = dispatchID;
     this.patientName          = patientName;
@@ -85,6 +89,7 @@ public class DispatchDetails {
     this.patientComplaint     = patientComplaint;
     this.reportedSeverity     = reportedSeverity;
     this.reportedByName       = reportedByName;
+    this.contactPhone         = contactPhone;
     this.dispatchUserID       = dispatchUserID;
     this.dispatchReceivedDate = dispatchReceivedDate;
     this.providerID           = providerID;
@@ -110,6 +115,7 @@ public class DispatchDetails {
       patientComplaint     = jsonData.patientComplaint;
       reportedSeverity     = jsonData.reportedSeverity;
       reportedByName       = jsonData.reportedByName;
+      contactPhone         = jsonData.contactPhone;
       dispatchUserID       = jsonData.dispatchUserID;
       dispatchReceivedDate = jsonData.dispatchReceivedDate;
       providerID           = jsonData.providerID;
@@ -291,5 +297,19 @@ public class DispatchDetails {
    */
   public void setIncidentLon(double incidentLon) {
     this.incidentLon = incidentLon;
+  }
+
+  /**
+   * @return the contactPhone
+   */
+  public String getContactPhone() {
+    return contactPhone;
+  }
+
+  /**
+   * @param contactPhone the contactPhone to set
+   */
+  public void setContactPhone(String contactPhone) {
+    this.contactPhone = contactPhone;
   }
 }
